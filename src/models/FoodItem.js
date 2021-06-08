@@ -9,13 +9,12 @@ const foodSchema = new mongoose.Schema({
     },
 
     photo: {
-        data: Buffer,
-         contentType: String
+        type: String,
+        required: false
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: false
-
     },
 
     price: {

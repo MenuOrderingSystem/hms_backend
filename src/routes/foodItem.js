@@ -1,8 +1,12 @@
 const {Router} = require( 'express');
-const { getAllFoods } = require('../controllers/FoodItem');
+const { getAllFoods, postFood } = require('../controllers/FoodItem');
+
+const {upload} = require('../middleware/mutler')
 
 const router = Router();
 
 router.get('/', getAllFoods)
 
-module.exports=router;
+router.post('/',upload.single('myImage'), postFood)
+
+module.exports = router;

@@ -1,4 +1,5 @@
 const {Router} = require('express')
+
 const { 
     getAllCategory, 
     postCategory 
@@ -7,6 +8,6 @@ const {
 const router = Router();
 
 router.get('/', getAllCategory)
-router.post('/', postCategory)
+router.post('/',  postCategory)
 
 module.exports=router;

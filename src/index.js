@@ -1,27 +1,29 @@
 const express = require('express')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv').config();
 const cors = require('cors')
+
 const mongoose = require('mongoose')
 const ApiRoutes = require('./routes')
 
 const app = express();
 
+app.use('/uploads', express.static('uploads'));
+
 app.use(express.json());
 
-const {parsed} = dotenv.config({ path: '../.env' })
+
 app.use(cors());
 
-app.use('/api', ApiRoutes)
+
+app.use('/api', ApiRoutes);
+
 app.get("/", (req, res) => {
-    console.log("abc")
-    console.log(req, res)
     res.json({message: "success11"})
 })
-const ur = parsed.MONGO_URI
 
 
 mongoose.connect(
-    ur,
+    process.env.MONGO_URI,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
