@@ -5,8 +5,9 @@ const mongoose = require('mongoose')
 const ApiRoutes = require('./routes')
 
 const app = express();
-console.log(process.env.MONGO_URI)
+
 app.use(express.json());
+
 const {parsed} = dotenv.config({ path: '../.env' })
 app.use(cors());
 
