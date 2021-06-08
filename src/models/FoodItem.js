@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const categorySchema = new mongoose.Schema({
+const foodSchema = new mongoose.Schema({
     name: {
         type: String,
         required: false
@@ -9,18 +9,28 @@ const categorySchema = new mongoose.Schema({
     },
 
     photo: {
-        type: Document,
-        required: false
+        data: Buffer,
+         contentType: String
     },
     category: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: false
 
     },
+
+    price: {
+        type: Number,
+        required: false
+    },
+
+    rating: {
+        type: Number,
+        required: false
+    }
 
     },{
         timestamps: true
     }
     )
 
-    module.exports = mongoose.model("category", categorySchema)
+    module.exports = mongoose.model("food", foodSchema)
