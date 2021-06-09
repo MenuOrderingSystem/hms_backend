@@ -21,7 +21,32 @@ catch(e) {
 }
 }
 
+const getCategoryById= async(req, res) => {
+    const {id} = req.body
+  try{
+      const getCategoryById = await FoodCategoryModel.find({_id: id})
+      res.status(200).json({success: true, getCategoryById})
+  }
+  catch(e) {
+      res.status(400).json({success: false, error: e.message})
+  }
+}
+
+const deleteCategory = async(req, res) => {
+    const {id} = req.body
+  try{
+      const deleteCategory = await FoodCategoryModel.remove({_id: id})
+      res.status(200).json({success: true, deleteCategory})
+  }
+  catch(e) {
+      res.status(400).json({success: false, error: e.message})
+  }
+}
+
 module.exports= {
     getAllCategory,
-    postCategory
+    postCategory,
+    getCategoryById,
+    deleteCategory
+
 };
