@@ -16,10 +16,15 @@ const getFoodById = async(req, res) => {
     const {id} = req.body
   try{
       const getFoodById = await FoodItemModel.find({_id: id})
-      res.status(200).json({success: true, getFoodById})
+      console.log(getFoodById.length)
+      if(getFoodById.length ==0) {
+        
+         return res.status(401).json({success: false, msg: "No food found"})
+      }
+      return res.status(200).json({success: true, getFoodById})
   }
   catch(e) {
-      res.status(400).json({success: false, error: e.message})
+     return res.status(400).json({success: false, error: e.message})
   }
 }
 
@@ -57,9 +62,28 @@ const deleteFood = async(req, res) => {
   }
 }
 
+const editFood = async(req, res) => {
+    const id = req.params.id;
+
+    try {
+      const editFood = await Service.findByIdAndUpdate(
+        {
+          _id: id,
+        },
+        req.body
+      );
+      res.status(200).json({ success: true, editFood });
+    } catch (err) {
+      res.status(400).json({ success: false, err: err.message });
+    }
+
+
+}
+
 module.exports= {
     getAllFoods,
     postFood,
     getFoodById,
-    deleteFood
+    deleteFood,
+    editFood
 };
