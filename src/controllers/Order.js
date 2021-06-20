@@ -1,6 +1,6 @@
 const  OrderModel = require ('../models/Order')
 
-const getAllOrder = async(req, res) => {
+exports.getAllOrder = async(req, res) => {
   try{
       const getAllOrder = await OrderModel.find()
       res.status(200).json({success: true, getAllOrder})
@@ -10,7 +10,7 @@ const getAllOrder = async(req, res) => {
   }
 }
 
-const postOrder = async (req, res) => {
+exports.postOrder = async (req, res) => {
     console.log(req.body)
 try{
     const postOrder = new OrderModel(req.body)
@@ -21,7 +21,7 @@ catch(e) {
 }
 }
 
-const getOrderById = async(req, res) => {
+exports.getOrderById = async(req, res) => {
     const {id} = req.body
   try{
       const getOrderById = await OrderModel.find({_id: id})
@@ -32,7 +32,7 @@ const getOrderById = async(req, res) => {
   }
 }
 
-const deleteOrder = async(req, res) => {
+exports.deleteOrder = async(req, res) => {
     const {id} = req.body
   try{
       const deleteOrder = await OrderModel.remove({_id: id})
@@ -42,11 +42,3 @@ const deleteOrder = async(req, res) => {
       res.status(400).json({success: false, error: e.message})
   }
 }
-
-
-module.exports= {
-    getAllOrder,
-    postOrder,
-    getOrderById,
-    deleteOrder
-};

@@ -1,9 +1,9 @@
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
-const FoodItemModel = require ('../models/FoodItem')
+const FoodItemModel = require ('../models/Food')
 
-const getAllFoods = async(req, res) => {
+exports.getAllFoods = async(req, res) => {
   try{
       const getAllFoods = await FoodItemModel.find()
       res.status(200).json({success: true, getAllFoods})
@@ -12,7 +12,7 @@ const getAllFoods = async(req, res) => {
       res.status(400).json({success: false, error: e.message})
   }
 }
-const getFoodById = async(req, res) => {
+exports.getFoodById = async(req, res) => {
     const {id} = req.body
   try{
       const getFoodById = await FoodItemModel.find({_id: id})
@@ -28,7 +28,7 @@ const getFoodById = async(req, res) => {
   }
 }
 
-const postFood = async (req, res) => {
+exports.postFood = async (req, res) => {
     try{
         const { filename: image } = req.file;
 
@@ -51,7 +51,7 @@ const postFood = async (req, res) => {
     }
 }
 
-const deleteFood = async(req, res) => {
+exports.deleteFood = async(req, res) => {
     const {id} = req.body
   try{
       const deleteFood = await FoodItemModel.remove({_id: id})
@@ -62,7 +62,7 @@ const deleteFood = async(req, res) => {
   }
 }
 
-const editFood = async(req, res) => {
+exports.editFood = async(req, res) => {
     const id = req.params.id;
 
     try {
@@ -76,14 +76,5 @@ const editFood = async(req, res) => {
     } catch (err) {
       res.status(400).json({ success: false, err: err.message });
     }
-
-
 }
 
-module.exports= {
-    getAllFoods,
-    postFood,
-    getFoodById,
-    deleteFood,
-    editFood
-};

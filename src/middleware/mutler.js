@@ -1,17 +1,17 @@
 const multer  = require('multer')
 
 const storageFunction = (savedPic) => {
-const storage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, savedPic)
-    },
+    const storage = multer.diskStorage({
+        destination: function (req, file, cb){
+            cb(null, savedPic)
+        },
 
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname)
-    },
+        filename: function (req, file, cb) {
+            cb(null, Date.now() + '-' + file.originalname)
+        },
 
-})
-return storage
+    })
+    return storage
 }
 
 const upload = (url) => {return multer({storage: storageFunction(url),

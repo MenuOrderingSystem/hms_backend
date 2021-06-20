@@ -5,10 +5,8 @@ const foodSchema = new mongoose.Schema({
     name: {
         type: String,
         required: false
-
     },
-
-    photo: {
+    image: {
         type: String,
         required: false
     },
@@ -16,17 +14,14 @@ const foodSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: false
     },
-
     price: {
         type: Number,
         required: false
     },
-
     rating: {
         type: Number,
         required: false
     }
-
     },{
         timestamps: true
     }

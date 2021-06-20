@@ -1,6 +1,6 @@
-const  FoodCategoryModel = require ('../models/FoodCategory')
+const  FoodCategoryModel = require ('../models/Category')
 
-const getAllCategory = async(req, res) => {
+exports.getAllCategory = async(req, res) => {
   try{
       const getAllCategory = await FoodCategoryModel.find()
       res.status(200).json({success: true, getAllCategory})
@@ -10,7 +10,7 @@ const getAllCategory = async(req, res) => {
   }
 }
 
-const postCategory = async (req, res) => {
+exports.postCategory = async (req, res) => {
     console.log(req.body)
 try{
     const postCategory = new FoodCategoryModel(req.body)
@@ -21,7 +21,7 @@ catch(e) {
 }
 }
 
-const getCategoryById= async(req, res) => {
+exports.getCategoryById= async(req, res) => {
     const {id} = req.body
   try{
       const getCategoryById = await FoodCategoryModel.find({_id: id})
@@ -32,7 +32,7 @@ const getCategoryById= async(req, res) => {
   }
 }
 
-const deleteCategory = async(req, res) => {
+exports.deleteCategory = async(req, res) => {
     const {id} = req.body
   try{
       const deleteCategory = await FoodCategoryModel.remove({_id: id})
@@ -42,11 +42,3 @@ const deleteCategory = async(req, res) => {
       res.status(400).json({success: false, error: e.message})
   }
 }
-
-module.exports= {
-    getAllCategory,
-    postCategory,
-    getCategoryById,
-    deleteCategory
-
-};
