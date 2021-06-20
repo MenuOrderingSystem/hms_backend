@@ -1,22 +1,29 @@
 const mongoose = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-    food: [{
-        type: mongoose.Schema.ObjectId,
+    food: [
+       { 
+           food: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'food',
         required: false
-    }],
+    },
+    quantity: {
+        type: Number,
+        required: false
+    }
+}
+],
 
-    table: {
+    order_no: {
         type: Number,
         required: false
     },
 
-    description: {
-        type: String,
+    table_no: {
+        type: Number,
         required: false
-
-    },
-
+    }
     },{
         timestamps: true
     }

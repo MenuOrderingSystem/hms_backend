@@ -1,7 +1,7 @@
 const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
-const FoodItemModel = require ('../models/FoodItem')
+const FoodItemModel = require ('../models/Food')
 
 const getAllFoods = async(req, res) => {
   try{

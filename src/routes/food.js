@@ -4,7 +4,7 @@ const { getAllFoods,
         getFoodById,
         deleteFood,
         editFood
- } = require('../controllers/FoodItem');
+ } = require('../controllers/Food');
 
 const {upload} = require('../middleware/mutler')
 
