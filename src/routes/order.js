@@ -8,9 +8,14 @@ const {
 
 const router = Router();
 
+const {orderValidation} = require('../middleware/validation')
+
 router.get('/', getAllOrder)
-router.post('/', postOrder)
+
+router.post('/', orderValidation,  postOrder)
+
 router.get('/:id', getOrderById)
+
 router.delete('/:id', deleteOrder)
 
 module.exports=router;

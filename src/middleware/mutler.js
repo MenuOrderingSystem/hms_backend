@@ -1,9 +1,9 @@
 const multer  = require('multer')
 
-const storageFunction = (savedPic) => {
+const storageFunction = (savedPicLocation) => {
     const storage = multer.diskStorage({
         destination: function (req, file, cb){
-            cb(null, savedPic)
+            cb(null, savedPicLocation)
         },
 
         filename: function (req, file, cb) {
@@ -14,7 +14,9 @@ const storageFunction = (savedPic) => {
     return storage
 }
 
-const upload = (url) => {return multer({storage: storageFunction(url),
+const upload = (url) => {
+
+    return multer({storage: storageFunction(url),
     fileFilter: function(req, file, cb) {
     if (file.mimetype == 'image/png' || file.mimetype == 'image/jpeg')
     {

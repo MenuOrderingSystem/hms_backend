@@ -12,6 +12,12 @@ const foodSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'category',
+        required: false
+    },
+    subCategory: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'subCategory',
         required: false
     },
     price: {
@@ -20,6 +26,18 @@ const foodSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
+        required: false
+    },
+    status: {
+        type: Boolean,
+        required: false
+    },
+    type: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'type'
+    },
+    description: {
+        type: String,
         required: false
     }
     },{

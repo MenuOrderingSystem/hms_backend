@@ -2,6 +2,8 @@ const express = require('express')
 
 const cors = require('cors')
 
+const bodyParser = require('body-parser')
+
 const connectToMongoDb = require('./config/db')
 
 
@@ -25,6 +27,6 @@ app.get("/", (req, res) => {
     res.json({message: "success11"})
 })
 
-app.listen(5000, () => {
-    console.log("server started at 5000")
+app.listen(8080, () => {
+    console.log("server started at 8080")
 })
